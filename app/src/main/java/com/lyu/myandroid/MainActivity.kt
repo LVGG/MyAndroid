@@ -11,22 +11,28 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
+import com.lyu.myandroid.databinding.ActivityMainLayoutBinding
 import com.lyu.myandroid.ui.theme.MyAndroidTheme
 
+
 class MainActivity : ComponentActivity() {
+    private lateinit var binding: ActivityMainLayoutBinding
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         enableEdgeToEdge()
-        setContent {
-            MyAndroidTheme {
-                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
-                    Greeting(
-                        name = "Android",
-                        modifier = Modifier.padding(innerPadding)
-                    )
-                }
-            }
-        }
+
+        binding = ActivityMainLayoutBinding.inflate(layoutInflater)
+        setContentView(binding.root)
+//        setContent {
+//            MyAndroidTheme {
+//                Scaffold(modifier = Modifier.fillMaxSize()) { innerPadding ->
+//                    Greeting(
+//                        name = "Android",
+//                        modifier = Modifier.padding(innerPadding)
+//                    )
+//                }
+//            }
+//        }
     }
 }
 
