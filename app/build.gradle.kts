@@ -2,6 +2,9 @@ plugins {
     alias(libs.plugins.android.application)
     alias(libs.plugins.kotlin.android)
     alias(libs.plugins.kotlin.compose)
+
+    // 应用 kapt 插件
+    alias(libs.plugins.kotlin.kapt)
 }
 
 android {
@@ -41,6 +44,17 @@ android {
 }
 
 dependencies {
+    implementation(libs.rxjava)
+    implementation(libs.rxandroid) // Android 专用，切换主线程用
+    implementation(libs.adapter.rxjava3)
+
+    // 转换后的依赖声明
+    implementation(libs.converter.gson) // JSON 转换器
+    implementation(libs.androidx.room.runtime)
+    // Kotlin 使用 kapt 替代 annotationProcessor
+    kapt("androidx.room:room-compiler:2.6.1") // Java 用
+    implementation(libs.room.rxjava3)
+
 
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
